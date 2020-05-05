@@ -29,9 +29,10 @@ async def clear(ctx, ammount=0):
 
 @client.command()
 @commands.has_permissions(administrator=True)
-async def bt(ctx, arg):
+async def bt(ctx):
     await ctx.channel.purge(limit=1)
-    await ctx.send(arg)
+    bttext = ' '.join(ctx.message.content.split(' ')[1:])
+    await ctx.send(bttext)
 
 @client.command()
 @commands.has_permissions(administrator=True)
