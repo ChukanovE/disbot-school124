@@ -20,15 +20,21 @@ async def help(ctx):
     emb.add_field(name='{}mute'.format(PREFIX), value='Блокировка чата')
     emb.add_field(name='{}clear'.format(PREFIX), value='Снятие ограничение чата')
     emb.add_field(name='{}bt'.format(PREFIX), value='Писать от имени бота')
-    emb.add_field(name='{}bma'.format(PREFIX), value='Писать от имени бота в личные сообщения, анонимно. '
-                                                     'После команды указать пользователя через @, '
-                                                     'затем указать количество слов в заголовке сообщения, '
-                                                     'после написать сообщение'
-                                                     '\n.bma @Nick_Name 2 Школа 124 Завтра уроков нет.'
-                                                     '\nВ заголовке 2 слова - Школа 124')
-    emb.add_field(name='{}bmt'.format(PREFIX), value='Писать от имени бота в личные сообщения. Аналогично с .bma')
+    emb.add_field(name='{}bma'.format(PREFIX), value='Писать от имени бота в личные сообщения, анонимно.')
+    emb.add_field(name='{}bmt'.format(PREFIX), value='Писать от имени бота в личные сообщения.')
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=emb)
+    await ctx.author.send('Команды .bma и .bmt - аналогичны'
+                      '\nВ первом случае сообщение отправляется анонимно'
+                        '\n.bma {}'.format(ctx.author.name) + ' 2 Школа 124 Каникулы начнутся с 1 июня'
+                        '\n Цифра "2" означает сколько слов будет в заголовке сообщения'
+                                                          '\nСообщение будет таким:')
+    emb = discord.Embed(title="Школа 124", colour=discord.Color.dark_blue())
+    emb.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+    emb.add_field(name='Специально для {}'.format(ctx.author.name), value="Каникулы начнутся с 1 июня")
+    emb.set_footer(text='Сообщение от анонима')
+    await ctx.author.send(embed=emb)
+    await ctx.author.send('Команда .bmt, в отличии от .bma - указывает автора'
 
 
 @client.command(pass_context=True)
