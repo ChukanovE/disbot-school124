@@ -26,7 +26,7 @@ async def help(ctx):
     await ctx.send(embed=emb)
     await ctx.author.send('Команды .bma и .bmt - аналогичны'
                       '\nВ первом случае сообщение отправляется анонимно'
-                        '\n.bma {}'.format(ctx.author.name) + ' 2 Школа 124 Каникулы начнутся с 1 июня'
+                        '\n.bma {}'.format(ctx.author.mention) + ' 2 Школа 124 Каникулы начнутся с 1 июня'
                         '\n Цифра "2" означает сколько слов будет в заголовке сообщения'
                                                           '\nСообщение будет таким:')
     emb = discord.Embed(title="Школа 124", colour=discord.Color.dark_blue())
@@ -35,9 +35,16 @@ async def help(ctx):
     emb.set_footer(text='Сообщение от анонима')
     await ctx.author.send(embed=emb)
     await ctx.author.send('Команда .bmt, в отличии от .bma - указывает автора'
+                          '\n.bmt {}'.format(ctx.author.mention) + ' 2 Школа 124 Каникулы начнутся с 1 июня'
+                                                                   '\nСообщение будет таким:')
+    emb = discord.Embed(title="Школа 124", colour=discord.Color.orange())
+    emb.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+    emb.add_field(name='Специально для {}'.format(ctx.author.name), value="Каникулы начнутся с 1 июня")
+    emb.set_footer(text='Сообщение от {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
+    await ctx.author.send(embed=emb)
 
 
-@client.command(pass_context=True)
+@client.command()
 @commands.has_permissions(administrator=True)
 async def clear(ctx, ammount=0):
     await ctx.channel.purge(limit=ammount + 1)
