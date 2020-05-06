@@ -20,8 +20,13 @@ async def help(ctx):
     emb.add_field(name='{}mute'.format(PREFIX), value='Блокировка чата')
     emb.add_field(name='{}clear'.format(PREFIX), value='Снятие ограничение чата')
     emb.add_field(name='{}bt'.format(PREFIX), value='Писать от имени бота')
-    emb.add_field(name='{}bma'.format(PREFIX), value='Писать от имени бота в личные сообщения, анонимно')
-    emb.add_field(name='{}bmt'.format(PREFIX), value='Писать от имени бота в личные сообщения')
+    emb.add_field(name='{}bma'.format(PREFIX), value='Писать от имени бота в личные сообщения, анонимно. '
+                                                     'После команды указать пользователя через @, '
+                                                     'затем указать количество слов в заголовке сообщения, '
+                                                     'после написать сообщение'
+                                                     '.bma @Nick_Name 2 Школа 124 Завтра уроков нет.'
+                                                     'В заголовке 2 слова - Школа 124')
+    emb.add_field(name='{}bmt'.format(PREFIX), value='Писать от имени бота в личные сообщения. Аналогично с .bma')
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=emb)
 
