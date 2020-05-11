@@ -8,6 +8,7 @@ client = commands.Bot(command_prefix=PREFIX)
 client.remove_command('help')
 
 
+
 @client.event
 async def on_command_error(ctx, error):
     pass
@@ -18,7 +19,7 @@ async def help(ctx):
     emb = discord.Embed(title='Навигация по командам', colour=discord.Color.green())
     emb.add_field(name='{}clear'.format(PREFIX), value='Очистка чата')
     emb.add_field(name='{}mute'.format(PREFIX), value='Блокировка чата')
-    emb.add_field(name='{}clear'.format(PREFIX), value='Снятие ограничение чата')
+    emb.add_field(name='{}unmute'.format(PREFIX), value='Снятие ограничение чата')
     emb.add_field(name='{}bt'.format(PREFIX), value='Писать от имени бота')
     emb.add_field(name='{}bma'.format(PREFIX), value='Писать от имени бота в личные сообщения, анонимно.')
     emb.add_field(name='{}bmt'.format(PREFIX), value='Писать от имени бота в личные сообщения.')
