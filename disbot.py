@@ -111,7 +111,7 @@ async def unmute(ctx, member: discord.Member):
     # await ctx.send(f'Молчанка снята с {member.mention}.')
     emb.set_author(name=member.name, icon_url=member.avatar_url)
     emb.add_field(name='Молчанка снята', value='{}'.format(member.mention) + ', можешь говорить.')
-    emb.set_footer(text='{}'.format(ctx.author.name) + ' разрешил говорить.', icon_url=ctx.author.avatar_url)
+    emb.set_footer(text='{}'.format(ctx.author.name) + ' разрешает тебе говорить.', icon_url=ctx.author.avatar_url)
     await ctx.send(embed=emb)
 
 
