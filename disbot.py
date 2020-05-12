@@ -18,11 +18,13 @@ async def on_command_error(ctx, error):
 async def help(ctx):
     emb = discord.Embed(title='Навигация по командам', colour=discord.Color.green())
     emb.add_field(name='{}clear <количество>'.format(PREFIX), value='Очистка чата')
-    emb.add_field(name='{}mute <"пользователь>'.format(PREFIX), value='Блокировка чата')
+    emb.add_field(name='{}mute <@пользователь>'.format(PREFIX), value='Блокировка чата')
     emb.add_field(name='{}unmute <@пользователь>'.format(PREFIX), value='Снятие ограничение чата')
     emb.add_field(name='{}bt <текст>'.format(PREFIX), value='Писать от имени бота')
-    emb.add_field(name='{}bma'.format(PREFIX), value='Писать от имени бота в личные сообщения, анонимно.')
-    emb.add_field(name='{}bmt'.format(PREFIX), value='Писать от имени бота в личные сообщения.')
+    emb.add_field(name='{}bma <@пользователь> <количество слов в заголовке> <заголовок> <текст>'.format(PREFIX),
+                  value='Писать от имени бота в личные сообщения, анонимно.')
+    emb.add_field(name='{}bmt <@пользователь> <количество слов в заголовке> <заголовок> <текст>'.format(PREFIX),
+                  value='Писать от имени бота в личные сообщения.')
     await ctx.channel.purge(limit=1)
     await ctx.send(embed=emb)
     await ctx.author.send('Команды .bma и .bmt - аналогичны'
